@@ -44,12 +44,22 @@ select {}
     height: 100%;
     width: 100%;
     opacity: 1;
+    visibility: hidden;
     transition: 2.2s;
+    position: relative;
+    z-index: -1;
 }
 
 .section.active {
     opacity: 1;
     transition: 0.5s;
+    z-index: 1;
+    visibility: visible;
+}
+
+h2 {
+    font-weight: 300;
+    @include adaptiv-font(54, 18)
 }
 
 // .background-block {
@@ -61,6 +71,22 @@ select {}
 //     transition: 0.7s;
 //     z-index: -1;
 // }
+
+.c-text {
+    text-align: center;
+}
+
+.l-text {
+    text-align: left;
+}
+
+.r-text {
+    text-align: right;
+}
+
+.m-a {
+    margin: 0 auto;
+}
 
 .arrows-top-left {
 

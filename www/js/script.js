@@ -93,10 +93,38 @@ $(document).ready(function () {
         chgangeBg();
         changeActive();
         menuIconColor(sectionIndex);
+
+
+        gsap.from(' .section.active h2', { duration: 1, opacity: 0, y: -200, ease: "back.inOut", delay: 0.4 });
+
+        if ($('.section.active').attr('data-num') == 0) {
+
+        } else if ($('.section.active').attr('data-num') == 1) {
+            gsap.from('.swiper-slide-post', 1, {
+                scale: 0.1,
+
+                x: 60,
+                ease: "elastic.inOut",
+                delay: 0.5,
+                stagger: {
+                    opacity: 0,
+                    amount: 0.8,
+                    grid: "auto",
+                    from: "left",
+                }
+            });
+
+        } else if ($('.section.active').attr('data-num') == 2) {
+
+        } else if ($('.section.active').attr('data-num') == 3) {
+
+        } else if ($('.section.active').attr('data-num') == 4) {
+
+        } else if ($('.section.active').attr('data-num') == 5) {
+
+        }
+
     }
-
-
-
 
 
     if (window.innerWidth > 767) {
@@ -141,11 +169,11 @@ $(document).ready(function () {
                 spaceBetween: 0
             },
             767: {
-                slidesPerView: 2,
+                slidesPerView: 3,
                 spaceBetween: 20
             },
             1200: {
-                slidesPerView: 2,
+                slidesPerView: 4,
                 spaceBetween: 40
             },
             1440: {
@@ -272,5 +300,6 @@ $(document).ready(function () {
     });
 
 
-
 });
+
+
