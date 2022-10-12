@@ -1,0 +1,151 @@
+.menu-button {
+    position: fixed;
+    z-index: 2;
+    right: 30px;
+    top: 30px;
+    border-radius: 50%;
+    border: unset;
+    width: 80px;
+    height: 80px;
+    background: transparent;
+    padding: 3px;
+    overflow: hidden;
+    cursor: pointer;
+
+    &:before {
+        content: "";
+        display: flex;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        padding: 3px;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        box-sizing: border-box;
+    }
+
+    &:after {
+        content: "";
+        border: 3px solid transparent;
+        transition: 0.2s;
+        display: flex;
+        position: absolute;
+        z-index: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        left: 0;
+        top: 0;
+        box-sizing: border-box;
+    }
+
+    &:hover {
+        background-color: unset;
+    }
+
+    .line {
+        display: flex;
+        width: 30px;
+        height: 3px;
+        position: relative;
+
+        &:before {
+            content: "";
+            position: absolute;
+            top: -9px;
+            left: 0;
+            width: 100%;
+            display: block;
+            height: 3px;
+            transition: 0.2s;
+        }
+
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: -9px;
+            left: 0;
+            width: 100%;
+            display: block;
+            height: 3px;
+            transition: 0.2s;
+        }
+    }
+
+    &.orange-icon {
+
+        &:before,
+        &:after {
+            border-color: #FF5D09;
+        }
+
+        .line {
+            background-color: #FF5D09;
+            transition: 0.2s;
+
+            &:before,
+            &:after {
+                background-color: #FF5D09;
+                transition: 0.2s;
+            }
+        }
+    }
+
+    &.white-icon {
+
+        &:before,
+        &:after {
+            border-color: #fff;
+        }
+
+        .line {
+            background-color: #fff;
+            transition: 0.2s;
+
+            &:before,
+            &:after {
+                background-color: #fff;
+                transition: 0.2s;
+            }
+        }
+    }
+
+
+    &.show {
+        .line {
+            background-color: transparent;
+
+            &:after {
+                transform: rotate(-45deg);
+                transition: 0.2s;
+                bottom: 0;
+            }
+
+            &:before {
+                transform: rotate(45deg);
+                transition: 0.2s;
+                top: 0;
+            }
+        }
+    }
+}
+
+.menu {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    transition: 0.2s;
+    transform: translateX(200%);
+    z-index: 1;
+    background-color: #ccc;
+    padding: 100px 70px
+}
+
+.menu.show {
+    transform: translateX(0%);
+    transition: 0.2s;
+}

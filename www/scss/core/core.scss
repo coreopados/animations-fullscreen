@@ -1,0 +1,25 @@
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    overflow-x: hidden;
+    font-family: $main-font;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    color: $main-color;
+    transition: 0.7s;
+}
+
+.container {
+    margin: 0 auto;
+    padding: 0 3rem;
+    max-width: 1200px;
+}

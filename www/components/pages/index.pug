@@ -1,0 +1,36 @@
+html(lang="ru")
+    //- Include head
+    include ../common/head.pug 
+    body
+        //- .arrows-top-left
+        //-     include ../icons/arrow.pug
+        //-     include ../icons/arrow.pug
+        //-     include ../icons/arrow.pug
+        //-     include ../icons/arrow.pug
+        //-     include ../icons/arrow.pug
+        button.menu-button
+            span.line
+        nav.menu
+            a(href="#main" data-link) !{"Main"}
+            a(href="#posts" data-link) !{"posts"}
+            a(href="#services" data-link) !{"services"}
+            a(href="#reviews" data-link) !{"reviews"}
+            a(href="#partners" data-link) !{"partners"}
+            a(href="#blog" data-link) !{"blog"}
+        div(id="fullpage")
+            include ../blocks/main.pug
+            include ../blocks/posts.pug
+            include ../blocks/services.pug
+            include ../blocks/reviews.pug
+            include ../blocks/partners.pug
+            include ../blocks/blogs.pug
+
+            .background-block
+            //- scripts
+            include ../common/scripts.pug 
+
+
+
+
+
+
