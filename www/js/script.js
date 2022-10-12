@@ -3,6 +3,20 @@ $(document).ready(function () {
 
 
     AOS.init();
+
+
+    gsap.from('.bounce-text', 1, {
+        y: -10,
+        ease: "bounce",
+        delay: 0.1,
+        stagger: {
+            amount: 0.1,
+            grid: "auto",
+            from: "center",
+        }
+    });
+
+
     var sectionIndex = 0,
         sectionNum,
         scrollDuration = 1200,
@@ -95,14 +109,23 @@ $(document).ready(function () {
         menuIconColor(sectionIndex);
 
 
-        gsap.from(' .section.active h2', { duration: 1, opacity: 0, y: -200, ease: "back.inOut", delay: 0.4 });
+        gsap.from('.bounce-text', 1, {
+            ease: "elastic.out(1, 0.5)",
+            duration: 1,
+            y: -15,
+            delay: 1.2,
+            stagger: {
+                amount: 0.1,
+                grid: "auto",
+                from: "center",
+            }
+        });
 
         if ($('.section.active').attr('data-num') == 0) {
 
         } else if ($('.section.active').attr('data-num') == 1) {
             gsap.from('.swiper-slide-post', 1, {
                 scale: 0.1,
-
                 x: 60,
                 ease: "elastic.inOut",
                 delay: 0.5,
