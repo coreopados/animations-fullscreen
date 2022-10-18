@@ -1,6 +1,7 @@
 html(lang="ru")
     append vars
-        - currentPage = 'index'
+        - lang = "en"
+        - currentPage = 'portfolio'
     include ../common/head.pug 
     body
         .arrows-vert-left.arrows-vertical
@@ -10,13 +11,7 @@ html(lang="ru")
 
         include ../common/nav.pug
         div(id="fullpage")
-            include ../blocks/main/main.pug
-            include ../blocks/main/portfolio.pug
-            include ../blocks/main/posts.pug
-            include ../blocks/main/services.pug
-            include ../blocks/main/reviews.pug
-            include ../blocks/main/partners.pug
-            include ../blocks/main/blogs.pug
+            h1 !{'Portfolio'}
         .layer
             //- scripts
             include ../common/scripts.pug 

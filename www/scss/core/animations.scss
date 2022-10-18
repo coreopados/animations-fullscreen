@@ -1,0 +1,114 @@
+$white-animation-arrow: opacityArrowWhite;
+$orange-animation-arrow: opacityArrowOrange;
+
+
+.arrows-horizontal {}
+
+.arrows-vertical {
+    position: fixed;
+    opacity: 0;
+    transition: 0.5s opacity ease-in-out;
+    max-width: 5vw;
+    width: 100%;
+
+    &.active {
+        opacity: 1;
+        transition: 0.5s opacity ease-in-out;
+    }
+}
+
+.arrows-vert-left {
+    left: 5vw;
+    top: 3vw;
+
+}
+
+.arrows-vert-right {
+    right: 5vw;
+    bottom: 3vw;
+}
+
+@keyframes opacityArrowWhite {
+    0% {
+        fill: #fff;
+        opacity: 1;
+    }
+
+    25% {
+        fill: #fff;
+        opacity: 1;
+    }
+
+    50% {
+        fill: #fff;
+        opacity: 1;
+    }
+
+    75% {
+        fill: #fff;
+        opacity: .5;
+    }
+
+    100% {
+        fill: #fff;
+        opacity: 0;
+    }
+}
+
+@keyframes opacityArrowOrange {
+    0% {
+        fill: $orange-color;
+        opacity: 1;
+    }
+
+    25% {
+        fill: $orange-color;
+        opacity: 1;
+    }
+
+    50% {
+        fill: $orange-color;
+        opacity: .75;
+    }
+
+    75% {
+        fill: $orange-color;
+        opacity: .5;
+    }
+
+    100% {
+        fill: $orange-color;
+        opacity: 0;
+    }
+}
+
+.horizontal-arrows {
+    @include arrow-animation($white-animation-arrow);
+
+    .arrow-item {
+        fill: #fff;
+    }
+}
+
+.arrows-vertical {}
+
+.white-animation-arrow.active {
+    @include arrow-animation($white-animation-arrow);
+
+    .arrow-item {
+        // fill: #0070D8;
+        fill: #fff;
+        opacity: 0.2;
+    }
+}
+
+.orange-animation-arrow.active {
+    @include arrow-animation($orange-animation-arrow);
+
+    .arrow-item {
+        fill: $orange-color;
+        opacity: 0.2;
+    }
+
+
+}

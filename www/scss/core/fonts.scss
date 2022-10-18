@@ -1,1 +1,10 @@
+@font-face {
+    font-family: 'point-soft';
+    src: url('./fonts/point-soft-regular.woff2') format('woff2'),
+        url('./fonts/point-soft-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;900&display=swap');

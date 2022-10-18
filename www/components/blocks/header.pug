@@ -1,2 +1,10 @@
-
-    
+header
+    .header-menu-wrap
+        nav.menu
+            .menu__link(class={active : currentPage == "index"}): a(href="index.html" ) !{"Home"}
+            .menu__link(class={active : currentPage == "about"}): a(href="about.html" class={active : currentPage == "about"}) !{"About"}
+            .menu__link(class={active : currentPage == "services"}): a(href="services.html" class={active : currentPage == "services"}) !{"Services"}
+            .menu__link(class={active : currentPage == "portfolio"}): a(href="portfolio.html" ) !{"Portfolio"}
+            .menu__link(class={active : currentPage == "case"}): a(href="case.html" class={active : currentPage == "case"}) !{"Case studies"}
+            .menu__link(class={active : currentPage == "blog"}): a(href="blog.html" class={active : currentPage == "blog"}) !{"Blog"}
+            .menu__link(class={active : currentPage == "contact"}): a(href="contact.html" class={active : currentPage == "contact"}) !{"Contact"}

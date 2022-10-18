@@ -1,0 +1,17 @@
+html(lang="en")
+    append vars
+        - lang = "en"
+        - currentPage = 'about'
+    include ../common/head.pug
+    body
+        .arrows-vert-left.arrows-vertical
+            include ../icons/arrows-vert.pug
+        .arrows-vert-right.arrows-vertical
+            include ../icons/arrows-vert.pug
+
+        include ../common/nav.pug
+        div(id="fullpage")
+            h1 !{"About"}
+        .layer
+            //- scripts
+            include ../common/scripts.pug
