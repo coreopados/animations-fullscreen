@@ -35,7 +35,7 @@ select {}
 
 .section {
     // min-height: 100vh;
-    min-height: 720px;
+    // min-height: 720px;
     display: -webkit-box;
     display: -webkit-flex;
     display: -ms-flexbox;
@@ -84,6 +84,13 @@ h2 {
 }
 
 
+.thin-text {
+    font-weight: 300;
+}
+
+.normal-text {
+    font-weight: 400;
+}
 
 
 .swiper-container {
@@ -145,7 +152,7 @@ h2 {
 
 
 
-    .section.active {
-        min-height: 100vh;
-    }
+    // .section.active {
+    //     min-height: 100vh;
+    // }
 }

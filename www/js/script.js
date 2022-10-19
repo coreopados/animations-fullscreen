@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 
     // vars
-    var sectionIndex = 0,
+    var sectionIndex,
         sectionNum,
         scrollDuration = 1200,
         scrolling = false,
@@ -12,8 +12,21 @@ $(document).ready(function () {
         sectionColor,
         iconColor,
         scrollDirection,
-        lockScroll = false;
+        lockScroll = false,
+        activeServiceSection = 0,
+        servicesCount = $('.services__row').length - 1,
+        lockScrollUp = false,
+        lockScrollDown = false;
 
+
+    function getActiveSectionIndex() {
+        $('.section').each(function (index, elem) {
+            if ($(elem).hasClass('active')) {
+                sectionIndex = index
+            }
+        })
+
+    }
     // check section num
     function checkSectionNum() {
         $('.section').each(function (i, elem) {
@@ -23,7 +36,7 @@ $(document).ready(function () {
     }
 
     //change active section function
-    function changeActive() {
+    function changeActiveSection() {
         $('.section').removeClass('active')
         $('.section').each(function (i, elem) {
             if (i === sectionIndex) {
@@ -39,7 +52,7 @@ $(document).ready(function () {
 
         $('.arrows-vertical')
             .addClass('active')
-
+        $('.menu-button').addClass('animate-icon')
         if (scrollDirection == "up") {
             $('.arrows-vertical').css('transform', 'rotateX(180deg)')
         } else if (scrollDirection == "down") {
@@ -56,18 +69,27 @@ $(document).ready(function () {
         setTimeout(function () {
             $('.arrows-vertical')
                 .removeClass('active')
+            $('.menu-button').removeClass('animate-icon')
         }, 1000)
     }
     // change bg function
     function chgangeBg() {
-        sectionColor = $('.section.active').attr('data-color-bg');
+        sectionColor = $('.section.active').not('#services').attr('data-color-bg');
+        if ($('#services').hasClass('active')) {
+            sectionColor = $('#services').find('.services__row.active').attr('data-color-bg')
+        }
+        $('body').css('background-color', sectionColor)
+    }
+    // change bg service function
+    function chgangeBgService() {
+        sectionColor = $('.services__row.active').attr('data-color-bg');
         $('body').css('background-color', sectionColor)
     }
 
     // check menu icon color function
     function menuIconColor() {
         iconColor = $('.section.active').attr('data-color-icon');
-        $('.menu-button .beforeButton, .menu-button .beforeButton , .menu-button .beforeButton, .menu-button .afterButton ').css('border-color', iconColor)
+        $('.menu-button .menuSvg__circle2, .menu-button .menuSvg__circle,  .menu-button .menuSvg__circle3 ').css('stroke', iconColor)
         $('.menu-button .line, .menu-button .line .afterLine, .menu-button .line .beforeLine').css('background-color', iconColor)
     }
     // fade text function
@@ -148,6 +170,20 @@ $(document).ready(function () {
     // check section and do gsap
     function sectionGsap() {
         if ($('#main').hasClass('active')) {
+            var time = 0.5;
+            var scaleCss = 1;
+            $('.header-menu-wrap .menu__link').each(function (i, elem) {
+                time += 0.05;
+                scaleCss -= 0.1;
+
+                gsap.from($(elem), 1, {
+                    scale: 0.1,
+                    opacity: 0,
+                    y: -500,
+                    delay: time,
+                    ease: 'elastic.out(1, 1)',
+                })
+            })
 
         } else if ($('#portfolio').hasClass('active')) {
 
@@ -175,7 +211,7 @@ $(document).ready(function () {
 
 
         } else if ($('#services').hasClass('active')) {
-            // lockScroll = true
+            lockScroll = true
         } else if ($('#reviews').hasClass('active')) {
 
         } else if ($('#partners').hasClass('active')) {
@@ -211,19 +247,22 @@ $(document).ready(function () {
     // scroll page function
     function scrollPage() {
 
+
+
         scrollHeight = $(window).height() * sectionIndex;
+
+
         hideActivePostText()
+
         $('#fullpage').css({
             'transition-duration': scrollDuration + 'ms',
             'transform': 'translate3d(0px,-' + scrollHeight + 'px,0px)'
         });
 
-        setTimeout(function () {
-            scrolling = false;
-        }, scrollDuration);
 
+        waitScroll(scrollDuration)
         // change active section
-        changeActive();
+        changeActiveSection();
         // change bg section
         chgangeBg();
         // change menu icon color
@@ -237,19 +276,112 @@ $(document).ready(function () {
 
     }
 
+    // scroll services section
+    function scrollServicesUp() {
+        if (activeServiceSection < servicesCount) {
+            activeServiceSection++
+            scrollServicesSection()
+
+        } else {
+            activeServiceSection = servicesCount;
+
+            waitScroll(200);
+            lockScroll = false;
+            // lockScrollUp = true;
+        }
+    }
+    function scrollServicesDown() {
+        if (activeServiceSection > 0) {
+            activeServiceSection--
+            scrollServicesSection()
+
+        } else {
+            activeServiceSection = 0;
+
+            waitScroll(200);
+            lockScroll = false;
+            // lockScrollDown = true;
+        }
+    }
+    function scrollServicesSection() {
+        // lockScrollUp = false
+        // lockScrollDown = false
+        lockScroll = true;
+        changeActiveTabService(activeServiceSection)
+        chgangeBgService()
+        waitScroll(500)
+    }
+
+
+    function changeActiveTabService(activeServiceSection) {
+        $('.services__row').removeClass('active')
+        $('.services__row').children('.services__icon')
+            .css('transform', 'scale(0.35)')
+
+
+        $('.services__row').each(function (i, elem) {
+            if (i === activeServiceSection) {
+                $(elem).addClass('active')
+                $(elem).children('.services__icon')
+                    .css('transform', 'scale(1)')
+                $(elem).prev().children('.services__icon')
+                    .css('transform', 'scale(.75)')
+                $(elem).next().children('.services__icon')
+                    .css('transform', 'scale(.75)')
+                $(elem).prev().prev().children('.services__icon')
+                    .css('transform', 'scale(0.5)')
+                $(elem).next().next().children('.services__icon')
+                    .css('transform', 'scale(0.5)')
+            }
+        })
+    }
+    changeActiveTabService(activeServiceSection)
+    // event click on service
+    $('.services__icon').click(function () {
+        $('.services__row').removeClass('active');
+        let activeRow = $(this).closest('.services__row');
+        activeRow.addClass('active')
+        $('.services__row').each(function (i, elem) {
+            if ($(elem).hasClass('active')) {
+                activeServiceSection = i
+            }
+        })
+        scrollServicesSection(activeServiceSection);
+    })
+
+    function waitScroll(x) {
+        setTimeout(function () {
+            scrolling = false;
+        }, x);
+    }
+
+
 
 
     if (window.innerWidth > 767) {
         $('#fullpage').bind('mousewheel', function (event) {
 
-            if (scrolling) return;
-            scrolling = true;
+            if (lockScroll == true) {
 
-            if (event.originalEvent.wheelDelta < 0) {
-                scrollUp();
+                if (scrolling) return;
+                scrolling = true;
+
+                if (event.originalEvent.wheelDelta < 0) {
+                    scrollServicesUp();
+                } else {
+                    scrollServicesDown();
+                }
             } else {
-                scrollDown();
+                if (scrolling) return;
+                scrolling = true;
+
+                if (event.originalEvent.wheelDelta < 0) {
+                    scrollUp();
+                } else {
+                    scrollDown();
+                }
             }
+
         });
     }
 
@@ -289,26 +421,7 @@ $(document).ready(function () {
     })
 
     // services slider
-    var servicesImg = $('.pagination-img');
 
-    // console.log(servicesImg)
-    var mySwiper2 = new Swiper('.swiper-services', {
-        direction: 'vertical',
-        slidesPerView: 1,
-        mousewheel: {
-            forceToAxis: true,
-            sensitivity: 1,
-            releaseOnEdges: true,
-        },
-        pagination: {
-            el: '.services-pagination',
-            clickable: true,
-            renderBullet: function (index, className) {
-                return '<span class=' + className + '><img src=' + servicesImg[index].src + '></span>';
-            },
-        },
-
-    })
 
     // reviews slider
     var mySwiper3 = new Swiper('.swiper-reviews', {
@@ -343,47 +456,6 @@ $(document).ready(function () {
     })
 
 
-    // $('a[data-link]').click(function (e) {
-    //     e.stopPropagation();
-    //     $('.menu-button,.menu-wrap').removeClass('show')
-    //     $('.section').removeClass('active')
-
-    //     var linkid = $(this).attr('href');
-    //     var section = $('' + linkid + '');
-    //     var possection = $('' + linkid + '').position().top;
-
-    //     if (window.innerWidth > 767) {
-
-    //         var numSection = $('' + linkid + '').attr('data-num');
-
-    //         if (numSection < sectionIndex) {
-    //             scrollDirection = 'up';
-    //         } else {
-    //             scrollDirection = 'down';
-    //         }
-
-    //         sectionIndex = +numSection
-    //         scrollHeight = $(window).height() * sectionIndex;
-    //         $('#fullpage').css({
-    //             'transition-duration': scrollDuration + 'ms',
-    //             'transform': 'translate3d(0px,-' + scrollHeight + 'px,0px)'
-    //         });
-
-    //     } else {
-    //         $('html, body').animate({ scrollTop: possection }, 'slow');
-    //     }
-
-    //     section.addClass('active');
-    //     sectionGsap()
-    //     menuIconColor();
-    //     chgangeBg();
-    //     arrowAniamtion()
-
-
-    //     return false;
-    // });
-
-
 
     // close menu
     jQuery(function ($) {
@@ -399,9 +471,13 @@ $(document).ready(function () {
         });
     });
 
-    checkSectionNum()
+
+
+    getActiveSectionIndex();
+    checkSectionNum();
     chgangeBg();
     menuIconColor();
+    scrollPage();
 
 });
 

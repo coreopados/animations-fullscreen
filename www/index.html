@@ -43,8 +43,15 @@
 </svg>
     </div>
     <button class="menu-button">
-      <div class="beforeButton"></div>
-      <div class="afterButton"></div><span class="line"><span class="beforeline"></span><span class="afterline"></span></span>
+      <svg class="menuSvg" width="60" height="60">
+        <circle class="menuSvg__circle" cx="30" cy="30" r="28" stroke="#fff" stroke-width="2" fill="transparent"></circle>
+      </svg>
+      <svg class="menuSvg2" width="60" height="60">
+        <circle class="menuSvg__circle2" cx="30" cy="30" r="28" stroke="#fff" stroke-width="2" fill="transparent"></circle>
+      </svg>
+      <svg class="menuSvg3" width="60" height="60">
+        <circle class="menuSvg__circle3" cx="30" cy="30" r="28" stroke="#fff" stroke-width="2" fill="transparent"></circle>
+      </svg><span class="line"><span class="beforeline"></span><span class="afterline"></span></span>
     </button>
     <div class="menu-wrap">
       <nav class="menu">
@@ -61,6 +68,19 @@
     <div id="fullpage">
       <section class="active section" id="main" data-num="0" data-color-bg="#0070D8" data-color-icon="#FFF" data-animation-color="white">
         <div class="container">
+          <header>
+            <div class="header-menu-wrap">
+              <nav class="menu">
+                <div class="menu__link active"><a href="index.html">Home</a></div>
+                <div class="menu__link"><a href="about.html">About</a></div>
+                <div class="menu__link"><a href="services.html">Services</a></div>
+                <div class="menu__link"><a href="portfolio.html">Portfolio</a></div>
+                <div class="menu__link"><a href="case.html">Case studies</a></div>
+                <div class="menu__link"><a href="blog.html">Blog</a></div>
+                <div class="menu__link"><a href="contact.html">Contact</a></div>
+              </nav>
+            </div>
+          </header>
           <div class="inner-container c-text">
             <h2 class="bounce-text">Powered by</h2>
             <div class="horizontal-arrows"> <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352.78 135.88">
@@ -78,7 +98,7 @@
 </g>
 </g>
 </svg>
-            </div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 463.89 127.24">
+            </div><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 463.89 127.24" style='max-width: 350px'>
 <defs>
 <style>.geeks-white{fill:#fff;}.cls-2{fill:#1c91c0;}.geeks-transparent{fill:transparent;}</style>
 </defs>
@@ -167,22 +187,55 @@
           </div>
         </div>
       </section>
-      <section class=" section" id="services" data-num="3" data-color-bg="#FF5F10" data-color-icon="#FFF" data-animation-color="white">
+      <section class="section" id="services" data-num="3" data-color-bg="#FF5F10" data-color-icon="#FFF" data-animation-color="white">
         <div class="container">
           <div class="inner-container c-text">
-            <h2 class="bounce-text">services</h2>
             <div class="services-container">
-              <div class="services-container__info"></div>
-              <div class="swiper-container swiper-services">
-                <div class="swiper-wrapper">
-                  <div class="swiper-slide service-slide">1</div>
-                  <div class="swiper-slide service-slide">2</div>
-                  <div class="swiper-slide service-slide">3</div>
-                  <div class="swiper-slide service-slide">4</div>
-                  <div class="swiper-slide service-slide">5</div>
-                  <div class="swiper-slide service-slide">6</div>
+              <div class="services-container__info">
+                <h2> 
+                  <div class="thin-text bounce-text">OUR</div>
+                  <div class="thin-text bounce-text">DIGITAL</div>
+                  <div class="normal-text bounce-text">MARKETING</div>
+                  <div class="normal-text bounce-text">SERVICES</div>
+                </h2>
+                <p class="thin-text bounce-text">We sow the seeds for success by offering a wide range of digital marketing services for healthcare sectors from standalone to integrated online marketing activities to get Healthcare and pharmaceutical brands alive and kicking.</p>
+              </div>
+              <div class="services__tabs">
+                <div class="services__row active" data-color-bg="#F65314">
+                  <div class="services__icon"><img src="img/services/bullets/1.png" alt=""/></div>
+                  <div class="services__text">
+                    <div class="services__title">Healthcare Social Media Management</div>
+                    <p class="thin-text">It's not about quantity, it's about quality. We develop a foolproof social media marketing strategy for pharma to nurture an effective brand image that stands out among competitors.</p>
+                  </div>
                 </div>
-                <div class="swiper-pagination services-pagination"><img class="pagination-img" src="img/services/bullets/1.png" alt=""/><img class="pagination-img" src="img/services/bullets/1.png" alt=""/><img class="pagination-img" src="img/services/bullets/1.png" alt=""/><img class="pagination-img" src="img/services/bullets/1.png" alt=""/><img class="pagination-img" src="img/services/bullets/1.png" alt=""/><img class="pagination-img" src="img/services/bullets/1.png" alt=""/></div>
+                <div class="services__row" data-color-bg="#FFBB00">
+                  <div class="services__icon"><img src="img/services/bullets/1.png" alt=""/></div>
+                  <div class="services__text">
+                    <div class="services__title">Web Design For Pharma</div>
+                    <p class="thin-text">Today's world feeds on the internet. Keeping pharmaceutical websites looking futuristic is substantial. When we launch a web rocket, we consider web standards that fit the pharmaceutical field, UX, bug-free development, SEO, A/B testing, inbound marketing, conversion funnel & Analytics to name a few.</p>
+                  </div>
+                </div>
+                <div class="services__row" data-color-bg="#00A1F1">
+                  <div class="services__icon"><img src="img/services/bullets/1.png" alt=""/></div>
+                  <div class="services__text">
+                    <div class="services__title">Mobile App Development</div>
+                    <p class="thin-text">In a world where everyone carries mobile phones, we create ads and custom content for these devices in order to ensure that your message reaches everyone</p>
+                  </div>
+                </div>
+                <div class="services__row" data-color-bg="0078D4">
+                  <div class="services__icon"><img src="img/services/bullets/1.png" alt=""/></div>
+                  <div class="services__text">
+                    <div class="services__title">Video Production For Healthcare Campaigns</div>
+                    <p class="thin-text">Video production is on the rise in the digital world. Every business needs to include videography in its strategy to capture their best moments. We craft 2D Infographics, motion graphics, stop motion videos and video shootings.</p>
+                  </div>
+                </div>
+                <div class="services__row" data-color-bg="#004578">
+                  <div class="services__icon"><img src="img/services/bullets/1.png" alt=""/></div>
+                  <div class="services__text">
+                    <div class="services__title">Creative Visual Hub</div>
+                    <p class="thin-text">We really care! Nothing works like our brand-new creative concepts that we make from the word go all the way up to a powerful health awareness campaign that converts.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
